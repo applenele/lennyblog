@@ -8,11 +8,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * Created by apple on 15/3/31.
  */
 @Controller
-@RequestMapping(value = "/home")
 public class HomeController {
 
-    @RequestMapping(value = "/show.do")
+    @RequestMapping(value = "/index.do")
     public String show(){
-        return "show";
+        return "index";
     }
 }
