@@ -1,10 +1,10 @@
 package com.lenny.controller;
 
+import com.github.rjeschke.txtmark.Processor;
 import com.lenny.model.Article;
 import com.lenny.model.Reply;
 import com.lenny.model.Tag;
 import com.lenny.repository.ArticleRepo;
-import com.sun.tools.javac.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -55,6 +55,7 @@ public class ManagerController {
     @RequestMapping(value = "/addArticle.do",method = RequestMethod.POST)
     @ResponseBody
     public String doAddArticle(@RequestParam String title,@RequestParam String content,@RequestParam String category,@RequestParam String tags) {
+        content =
         String uuid=UUID.randomUUID().toString();
         String ptime= LocalDateTime.now().format(DateTimeFormatter.ofPattern("YYYY-MM-dd HH:mm:ss"));
         Article article=new Article(content,0,uuid,0,ptime,new ArrayList<Reply>(),new ArrayList<Tag>(),title);
