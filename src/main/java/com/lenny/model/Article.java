@@ -1,12 +1,17 @@
 package com.lenny.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.List;
 
 /**
  * Created by apple on 15/3/31.
  */
+@Document(collection = "articles")
 public class Article {
 
+    @Id
     private String id;
 
     private String title;
@@ -21,17 +26,17 @@ public class Article {
 
     private Integer hit;
 
-    private Integer ommentnum;
+    private Integer commentnum;
 
 
     public Article() {
     }
 
-    public Article(String content, Integer hit, String id, Integer ommentnum, String ptime, List<Reply> replies, List<Tag> tags, String title) {
+    public Article(String content, Integer hit, String id, Integer commentnum, String ptime, List<Reply> replies, List<Tag> tags, String title) {
         this.content = content;
         this.hit = hit;
         this.id = id;
-        this.ommentnum = ommentnum;
+        this.commentnum = commentnum;
         this.ptime = ptime;
         this.replies = replies;
         this.tags = tags;
@@ -62,12 +67,12 @@ public class Article {
         this.id = id;
     }
 
-    public Integer getOmmentnum() {
-        return ommentnum;
+    public Integer getCommentnum() {
+        return commentnum;
     }
 
     public void setOmmentnum(Integer ommentnum) {
-        this.ommentnum = ommentnum;
+        this.commentnum = ommentnum;
     }
 
     public String getPtime() {
@@ -108,7 +113,7 @@ public class Article {
                 "content='" + content + '\'' +
                 ", hit=" + hit +
                 ", id='" + id + '\'' +
-                ", ommentnum=" + ommentnum +
+                ", ommentnum=" + commentnum +
                 ", ptime='" + ptime + '\'' +
                 ", title='" + title + '\'' +
                 '}';
