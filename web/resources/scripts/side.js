@@ -3,44 +3,51 @@
  */
 
 
-function LoadCatogorues(){
+function LoadCatogorues() {
     $.ajax({
-        url:"/article/getCategories.do",
-        method:"post",
+        url: "/article/getCategories.do",
+        method: "post",
         dataType: "json",
+        asyn:false,
         contentType: "application/x-www-form-urlencoded; charset=utf-8",
-        success:function(data){
-            var str="";
-            for(var key in data){
-                str=str+" <li><a href=#'>"+key+"("+data[key]+")</a></li>"
+        success: function (data) {
+            var str = "";
+            for (var key in data) {
+                str = str + " <li><a href='javascript:void(0)' class='" + key + "'>" + key + "(" + data[key] + ")</a></li>"
             }
             $("#categories").html(str);
+
         },
-        error:function(data){
+        error: function (data) {
             console.log("error");
         }
     });
 }
 
-function LoadTime(){
+function LoadTime() {
     $.ajax({
-        url:"/article/getTime.do",
-        method:"post",
+        url: "/article/getTime.do",
+        method: "post",
         dataType: "json",
         contentType: "application/x-www-form-urlencoded; charset=utf-8",
-        success:function(data){
-            var str="";
-            for(var key in data){
-                str=str+" <li><a href=#'>"+key+"("+data[key]+")</a></li>"
+        success: function (data) {
+            var str = "";
+            for (var key in data) {
+                str = str + " <li><a href='javascript:void(0)' class='" + key + "'>" + key + "(" + data[key] + ")</a></li>"
             }
-            $("#categories").html(str);
+            $("#ptime").html(str);
         },
-        error:function(data){
+        error: function (data) {
             console.log("error");
         }
     });
 }
 
 $(document).ready(function () {
-   LoadCatogorues();
+    LoadCatogorues();
+    LoadTime();
+
+    $(".Backend").click(function () {
+        alert("asd");
+    });
 })

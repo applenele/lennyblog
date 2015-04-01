@@ -27,25 +27,42 @@ public class ArticleController {
     @Autowired
     private ArticleRepo articleRepo;
 
-    @RequestMapping(value = "/getArticles.do",method = RequestMethod.POST)
+    @RequestMapping(value = "/getArticles.do", method = RequestMethod.POST)
     @ResponseBody
     public List<Article> getArticles(String category, String time, Integer page) {
         List<Article> articles = articleService.getByPage(category, time, page);
         return articles;
     }
 
-    @RequestMapping(value = "/getCategories.do",method = RequestMethod.POST)
+    @RequestMapping(value = "/getCategories.do", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String,Integer> getCategories(){
-        Map<String,Integer> map=new HashMap<String, Integer>();
-        List<Article> articles=articleRepo.findAll();
-        for (Article article : articles){
-            if(map.containsKey(article.getCategory())){
-                int count=(int)map.get(article.getCategory());
-                map.put(article.getCategory(),count++);
+    public Map<String, Integer> getCategories() {
+        Map<String, Integer> map = new HashMap<String, Integer>();
+        List<Article> articles = articleRepo.findAll();
+        for (Article article : articles) {
+            if (map.containsKey(article.getCategory())) {
+                int count = (int) map.get(article.getCategory());
+                map.put(article.getCategory(), count++);
+            } else {
+                map.put(article.getCategory(), 1);
             }
-            else{
-                map.put(article.getCategory(),1);
+        }
+        return map;
+    }
+
+
+    @RequestMapping(value = "/getTime.do", method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String, Integer> getTime() {
+        Map<String, Integer> map = new HashMap<String, Integer>();
+        List<Article> articles = articleRepo.findAll();
+        for (Article article : articles) {
+            String time = article.getPtime().substring(0,7);
+            if (map.containsKey(time)) {
+                int count = (int) map.get(time);
+                map.put(time, count++);
+            } else {
+                map.put(time, 1);
             }
         }
         return map;

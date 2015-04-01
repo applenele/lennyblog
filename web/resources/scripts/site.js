@@ -31,8 +31,8 @@ function LoadArticles() {
                         "<div class='post-tags'><a href='#' class='post-tags-item'>Backend</a></div></div>";
                     }
                     $("#articleLst").append(str);
-                    if(data.length==6){
-                        lock=false;
+                    if (data.length == 6) {
+                        lock = false;
                         page++;
                     }
                 }
@@ -48,6 +48,13 @@ function Load() {
     LoadArticles();
 }
 
+function Common(){
+    page = 0;
+    lock = false;
+    $("#articleLst").html("");
+    Load();
+}
+
 $(document).ready(function () {
 
     Load();
@@ -60,4 +67,22 @@ $(document).ready(function () {
                 Load();
             }
         });
+
+    $(".Home").click(function () {
+        time = "";
+        category = "";
+        Common();
+    });
+
+    $(".Frontend").click(function () {
+        time = "";
+        category = "Frontend";
+        Common();
+    });
+
+    $(".Backend").click(function () {
+        time = "";
+        category = "Backend";
+        Common();
+    });
 });
