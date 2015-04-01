@@ -64,7 +64,7 @@ public class ManagerController {
         }
         String uuid=UUID.randomUUID().toString();
         String ptime= LocalDateTime.now().format(DateTimeFormatter.ofPattern("YYYY-MM-dd HH:mm:ss"));
-        Article article=new Article(content,0,uuid,0,ptime,new ArrayList<Reply>(),new ArrayList<Tag>(),title);
+        Article article=new Article(content,0,uuid,0,ptime,new ArrayList<Reply>(),new ArrayList<Tag>(),title,category);
         articleRepo.save(article);
         return "ok";
     }

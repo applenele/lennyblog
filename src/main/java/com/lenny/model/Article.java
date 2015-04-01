@@ -28,11 +28,13 @@ public class Article {
 
     private Integer commentnum;
 
+    private String category;
+
 
     public Article() {
     }
 
-    public Article(String content, Integer hit, String id, Integer commentnum, String ptime, List<Reply> replies, List<Tag> tags, String title) {
+    public Article(String content, Integer hit, String id, Integer commentnum, String ptime, List<Reply> replies, List<Tag> tags, String title,String category) {
         this.content = content;
         this.hit = hit;
         this.id = id;
@@ -41,6 +43,7 @@ public class Article {
         this.replies = replies;
         this.tags = tags;
         this.title = title;
+        this.category=category;
     }
 
     public String getContent() {
@@ -65,14 +68,6 @@ public class Article {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public Integer getCommentnum() {
-        return commentnum;
-    }
-
-    public void setOmmentnum(Integer ommentnum) {
-        this.commentnum = ommentnum;
     }
 
     public String getPtime() {
@@ -117,5 +112,21 @@ public class Article {
                 ", ptime='" + ptime + '\'' +
                 ", title='" + title + '\'' +
                 '}';
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public Integer getCommentnum() {
+        return commentnum;
+    }
+
+    public void setCommentnum(Integer commentnum) {
+        this.commentnum = commentnum;
     }
 }
