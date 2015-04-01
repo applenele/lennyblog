@@ -24,7 +24,6 @@ public class ArticleController {
     @RequestMapping(value = "/getArticles.do",method = RequestMethod.POST)
     @ResponseBody
     public List<Article> getArticles(String category, String time, Integer page) {
-        System.out.println(category+time+page);
         List<Article> articles = articleService.getByPage(category, time, page);
         return articles;
     }
