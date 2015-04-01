@@ -10,4 +10,5 @@ import java.io.Serializable;
  * Created by apple on 15/3/31.
  */
 public interface ArticleRepo  extends MongoRepository<Article,String> {
+
 }

@@ -8,7 +8,7 @@
        http://www.springframework.org/schema/data/mongo
        http://www.springframework.org/schema/data/mongo/spring-mongo.xsd">
 
-    <mono:mongo id="mongo" host="local" port="27017"></mono:mongo>
+    <mono:mongo id="mongo" host="127.0.0.1" port="27017"></mono:mongo>
     <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
         <constructor-arg ref="mongo" />
         <constructor-arg name="databaseName" value="lennyblog"  />
@@ -16,6 +16,5 @@
 
     <!--指定mongo仓库包-->
     <mono:repositories base-package="com.lenny.repository" />
-
 
 </beans>
