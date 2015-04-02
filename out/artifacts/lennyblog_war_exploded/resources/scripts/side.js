@@ -33,7 +33,7 @@ function LoadTime() {
         success: function (data) {
             var str = "";
             for (var key in data) {
-                str = str + " <li><a href='javascript:void(0)' class='" + key + "'>" + key + "(" + data[key] + ")</a></li>"
+                str = str + " <li><a href='javascript:void(0)' class='atime'><span style='display: none;'>"+key+"</span>" + key + "(" + data[key] + ")</a></li>"
             }
             $("#ptime").html(str);
         },
@@ -52,6 +52,12 @@ $(document).ready(function () {
         category = $(this).children("span").text();
         Common();
     })
+
+    $(document).on("click",".atime", function () {
+        time = $(this).children("span").text();
+        category = "";
+        Common();
+    });
 
 });
 
