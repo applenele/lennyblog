@@ -47,4 +47,12 @@ public class ArticleService  implements IArticleService{
         articles=mongoTemplate.find(query,Article.class);
         return articles;
     }
+
+
+    @Override
+    public Article findById(String id) {
+        Article article =new Article();
+        article =mongoTemplate.findById(id,Article.class);
+        return article;
+    }
 }

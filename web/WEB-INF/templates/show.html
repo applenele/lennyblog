@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://org.themeleaf.com">
+<html xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
     <meta charset="UTF-8"/>
     <title>home - lenny </title>
@@ -26,6 +26,7 @@
 <div class="banner"></div>
 <div class="container">
     <div class="grid-6 left" id="main">
+        <p th:utext="${article.content}"></p>
     </div>
 
     <div class="grid-3 right">

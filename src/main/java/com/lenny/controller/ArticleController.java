@@ -5,10 +5,8 @@ import com.lenny.repository.ArticleRepo;
 import com.lenny.service.IArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -57,7 +55,7 @@ public class ArticleController {
         Map<String, Integer> map = new HashMap<String, Integer>();
         List<Article> articles = articleRepo.findAll();
         for (Article article : articles) {
-            String time = article.getPtime().substring(0,7);
+            String time = article.getPtime().substring(0, 7);
             if (map.containsKey(time)) {
                 int count = (int) map.get(time);
                 map.put(time, count++);
@@ -66,5 +64,13 @@ public class ArticleController {
             }
         }
         return map;
+    }
+
+
+    @RequestMapping(value = "/show.do", method = RequestMethod.GET)
+    public String show(@RequestParam String id, Model model) {
+        Article article=articleService.findById(id);
+        model.addAttribute("article",article);
+        return "show";
     }
 }

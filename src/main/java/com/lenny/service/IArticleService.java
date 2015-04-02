@@ -10,4 +10,6 @@ import java.util.List;
 public interface IArticleService {
 
     List<Article>  getByPage(String category,String ptime,Integer page);
+
+    Article findById(String id);
 }
