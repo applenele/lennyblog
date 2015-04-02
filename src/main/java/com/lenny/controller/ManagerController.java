@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -62,9 +63,15 @@ public class ManagerController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        String[] tagArr=tags.split(",");
+        List<Tag> tagList =new ArrayList<Tag>();
+        for (String stag : tagArr){
+            Tag tag =new Tag(stag);
+            tagList.add(tag);
+        }
         String uuid=UUID.randomUUID().toString();
         String ptime= LocalDateTime.now().format(DateTimeFormatter.ofPattern("YYYY-MM-dd HH:mm:ss"));
-        Article article=new Article(content,0,uuid,0,ptime,new ArrayList<Reply>(),new ArrayList<Tag>(),title,category);
+        Article article=new Article(content,0,uuid,0,ptime,new ArrayList<Reply>(),tagList,title,category);
         articleRepo.save(article);
         return "ok";
     }

@@ -26,9 +26,13 @@ function LoadArticles() {
                 if (data.length > 0) {
                     var str = "";
                     for (var i = 0; i < data.length; i++) {
+                        var tags="";
+                        for(var j=0;j<data[i].tags.length;j++){
+                            tags=tags+"<a href='#' class='post-tags-item' style='margin-right: 10px;'>"+data[i].tags[j].content+"</a>"
+                        }
                         str = str + "<div class='post'><h2><a href=''#' class='post-title'>" + data[i].title + "</a></h2><p class='time'>" +
                         "Published on " + data[i].ptime + "</p><div class='post-content'>" + data[i].content + "</div>" +
-                        "<div class='post-tags'><a href='#' class='post-tags-item'>Backend</a></div></div>";
+                        "<div class='post-tags'>"+tags+"</div>";
                     }
                     $("#articleLst").append(str);
                     if (data.length == 6) {
