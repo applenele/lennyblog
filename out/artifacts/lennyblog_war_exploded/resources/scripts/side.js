@@ -13,7 +13,7 @@ function LoadCatogorues() {
         success: function (data) {
             var str = "";
             for (var key in data) {
-                str = str + " <li><a href='javascript:void(0)' class='" + key + "'>" + key + "(" + data[key] + ")</a></li>"
+                str = str + " <li><a href='javascript:void(0)' class='category'><span style='display: none;'>"+key+"</span>" + key + "(" + data[key] + ")</a></li>"
             }
             $("#categories").html(str);
 
@@ -47,7 +47,12 @@ $(document).ready(function () {
     LoadCatogorues();
     LoadTime();
 
-    $(".Backend").click(function () {
-        alert("asd");
-    });
-})
+    $(document).on("click",".category", function () {
+        time = "";
+        category = $(this).children("span").text();
+        Common();
+    })
+
+});
+
+
