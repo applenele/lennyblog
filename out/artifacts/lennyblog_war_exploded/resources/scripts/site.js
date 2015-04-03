@@ -8,7 +8,7 @@ var lock = false;
 
 var time = "";
 var category = "";
-
+var flag=false;
 
 function LoadArticles() {
     if (lock) {
@@ -49,17 +49,15 @@ function LoadArticles() {
 }
 
 function Load() {
-    LoadArticles();
+    if(!flag){
+        LoadArticles();
+    }
 }
 
-function Common(){
-    page = 0;
-    lock = false;
-    $("#articleLst").html("");
-    Load();
-}
 
 $(document).ready(function () {
+
+    category=$("#category").val();
 
     Load();
 
@@ -72,22 +70,5 @@ $(document).ready(function () {
             }
         });
 
-    $(".Home").click(function () {
-        time = "";
-        category = "";
-        Common();
-    });
-
-    $(".Frontend").click(function () {
-        time = "";
-        category = "Frontend";
-        Common();
-    });
-
-    $(".Backend").click(function () {
-        time = "";
-        category = "Backend";
-        Common();
-    });
 
 });

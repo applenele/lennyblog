@@ -44,7 +44,7 @@ public class ArticleController {
         for (Article article : articles) {
             if (map.containsKey(article.getCategory())) {
                 int count = (int) map.get(article.getCategory());
-                map.put(article.getCategory(), count++);
+                map.put(article.getCategory(), ++count);
             } else {
                 map.put(article.getCategory(), 1);
             }
@@ -62,7 +62,7 @@ public class ArticleController {
             String time = article.getPtime().substring(0, 7);
             if (map.containsKey(time)) {
                 int count = (int) map.get(time);
-                map.put(time, count++);
+                map.put(time, ++count);
             } else {
                 map.put(time, 1);
             }

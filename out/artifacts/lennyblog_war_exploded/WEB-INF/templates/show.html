@@ -7,29 +7,27 @@
     <link href="/resources/styles/markdown.css" rel="stylesheet" />
     <link href="/resources/styles/site.css" rel="stylesheet" />
 
-    <script src="resources/scripts/jquery.min.js"></script>
+    <script src="/resources/scripts/jquery.min.js"></script>
     <script src="/resources/scripts/side.js"></script>
-    <script src="/resources/scripts/side.js.js"></script>
 </head>
 <body>
 <div class="nav">
     <div class="container">
-        <a href="javascript:void(0)" class="Home">
+        <a href="/index.do" class="Home">
             <div class="nav-item">Home</div>
         </a>
-        <a href="javascript:void(0)" class="Frontend">
+        <a href="/category/show.do?post=Frontend" class="Frontend">
             <div class="nav-item">Frontend</div>
         </a>
-        <a href="javascript:void(0)" class="Backend">
+        <a href="/category/show.do?post=Backend" class="Backend">
             <div class="nav-item">Backend</div>
         </a>
-
         <div class="clear"></div>
     </div>
 </div>
 <div class="banner"></div>
 <div class="container">
-    <div class="grid-6 left" id="main">
+    <div class="grid-6 left" id="article">
         <div  class="markdown" th:utext="${article.content}"></div>
     </div>
 
@@ -51,6 +49,5 @@
     Copyright 2015 Lenny, all rights reserved. <a href="/manage/login.do">manager</a>
 </div>
 
-<script src="/resources/scripts/site.js"></script>
 </body>
 </html>
