@@ -3,6 +3,7 @@ package com.lenny.controller;
 import com.lenny.model.Article;
 import com.lenny.repository.ArticleRepo;
 import com.lenny.service.IArticleService;
+import com.lenny.util.StringHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,6 +30,9 @@ public class ArticleController {
     @ResponseBody
     public List<Article> getArticles(String category, String time, Integer page) {
         List<Article> articles = articleService.getByPage(category, time, page);
+        for (Article article : articles) {
+             article.setContent(StringHelper.getSomeConent(article.getContent()));
+        }
         return articles;
     }
 
@@ -69,8 +73,8 @@ public class ArticleController {
 
     @RequestMapping(value = "/show.do", method = RequestMethod.GET)
     public String show(@RequestParam String id, Model model) {
-        Article article=articleService.findById(id);
-        model.addAttribute("article",article);
+        Article article = articleService.findById(id);
+        model.addAttribute("article", article);
         return "show";
     }
 }

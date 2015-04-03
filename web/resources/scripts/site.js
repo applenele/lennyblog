@@ -31,7 +31,7 @@ function LoadArticles() {
                             tags=tags+"<a href='#' class='post-tags-item' style='margin-right: 10px;'>"+data[i].tags[j].content+"</a>"
                         }
                         str = str + "<div class='post'><h2><a href='/article/show.do?id="+data[i].id+"' class='post-title'>" + data[i].title + "</a></h2><p class='time'>" +
-                        "Published on " + data[i].ptime + "</p><div class='post-content'>" + data[i].content + "</div>" +
+                        "Published on " + data[i].ptime + "</p><div class='post-content'>" +data[i].content .replace(/<[^>].*?>/g,"")+ "</div>" +
                         "<div class='post-tags'>"+tags+"</div>";
                     }
                     $("#main").append(str);

@@ -63,11 +63,13 @@ public class ManagerController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        String[] tagArr=tags.split(",");
         List<Tag> tagList =new ArrayList<Tag>();
-        for (String stag : tagArr){
-            Tag tag =new Tag(stag);
-            tagList.add(tag);
+        if(!"".equals(tags)){
+            String[] tagArr=tags.split(",");
+            for (String stag : tagArr){
+                Tag tag =new Tag(stag);
+                tagList.add(tag);
+            }
         }
         String uuid=UUID.randomUUID().toString();
         String ptime= LocalDateTime.now().format(DateTimeFormatter.ofPattern("YYYY-MM-dd HH:mm:ss"));
