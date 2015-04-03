@@ -34,7 +34,8 @@ function LoadTime() {
         success: function (data) {
             var str = "";
             for (var key in data) {
-                str = str + " <li><a href='javascript:void(0)' class='atime'><span style='display: none;'>"+key+"</span>" + key + "(" + data[key] + ")</a></li>"
+                var url="/time/show.do?post="+key;
+                str = str + " <li><a href='"+url+"' class='atime'><span style='display: none;'>"+key+"</span>" + key + "(" + data[key] + ")</a></li>"
             }
             $("#ptime").html(str);
         },

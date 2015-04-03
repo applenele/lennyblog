@@ -58,6 +58,7 @@ function Load() {
 $(document).ready(function () {
 
     category=$("#category").val();
+    time = $("#time").val();
 
     Load();
 
